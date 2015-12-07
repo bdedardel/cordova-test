@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>CordovaTest</title>
+	<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://localhost:8080">
+	<link rel="stylesheet" href="css/speech-input.css">
+	<style>
+	.si-wrapper {
+		margin-top:50px;
+		margin-left:50px;
+	}
+	
+	input {
+		width:200px;		
+		font-size: 2em;
+		padding: .1em;
+	}
+	</style>
+</head>
+<body>
+	<!--
+	<input type="text" x-webkit-speech="x-webkit-speech"/>
+	-->
+	
+	<div class="si-wrapper">
+		<input type="text" class="si-input" placeholder="What's up?">
+		<button class="si-btn">
+			speech input
+			<span class="si-mic"></span>
+			<span class="si-holder"></span>
+		</button>
+	</div>
+	
+	<script src="speech-input.js"></script>
+	<script src="cordova.js"></script>
+	<script>
+var recognition = new webkitSpeechRecognition();
+recognition.onresult = function(event) { 
+  console.log('cordovatest', event) 
+}
+recognition.start();
+	</script>
+</body>
+</html>

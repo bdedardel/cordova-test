@@ -8,7 +8,7 @@
 			<link rel="stylesheet" href="css/lib/onsenui.css" />
 			<link rel="stylesheet" href="css/lib/onsen-css-components-blue-basic-theme.css" />
 	</head>
-	<body ng-controller="AppController as appCtl" style="width:100%;overflow:hidden;">
+	<body style="width:100%;overflow:hidden;">
 
 		<ons-navigator var="onsOnsenUINavigator" page="splitter.html"></ons-navigator>
 
@@ -29,7 +29,7 @@
 			<div id="mymodel-pages"><!-- ===== begin entity: mymodel ===== -->
 				<ons-template id="main.html">
 
-					<ons-page id="mainmymodel-page" ng-controller="MyModelController as mymodelCtl">
+					<ons-page id="mainmymodel-page">
 						<!-- ===== begin toolbar: main-mymodel ===== -->
 						<ons-toolbar id="main-mymodel-toolbar" style="background-color:#333;">
 							<div class="left" onclick="onsenuiMenu.toggle()">
@@ -43,118 +43,16 @@
 						</ons-toolbar><!-- end toolbar: main-mymodel -->
 						<ons-list id="listitems-list">
 							<ons-list-header>{{'ITEMS'}}</ons-list-header>
-							<ons-list-item class="item" modifier="chevron"
-								ng-click="mymodelCtl.edit(item)" ng-repeat="item in items  | orderBy:'+id' track by $index">
+							<ons-list-item class="item" modifier="chevron">
 
-								<div class="center">{{item.field1}}</div>
+								<div class="center">ITEM1</div>
 
 							</ons-list-item>
 
 						</ons-list>
-						<ons-fab position="bottom right" id="mymodel-new-button"
-							 ng-click="mymodelCtl.newAction(mymodel)">
-							<ons-icon icon="ion-plus-round"></ons-icon>
-						</ons-fab>
-
 					</ons-page>
 				</ons-template>
 
-				<!-- template: edit-mymodel -->
-				<ons-template id="edit-mymodel.html">
-					<ons-page ng-controller="MyModelController as mymodelCtl"
-						id="editmymodel-page">
-						<form id="editmymodel-form" name="editmymodelForm" class="mymodel-form"><!-- 
-								novalidate="true" -->
-							<!-- ===== begin toolbar: edit-mymodel ===== -->
-							<ons-toolbar id="edit-mymodel-toolbar" style="background-color:#333;">
-								<div class="left">
-									<ons-icon icon="ion-chevron-left" size="30px"
-										style="color:#ccc;padding:10px 0 10px 10px;" ng-click="mymodelCtl.backAction(initialMyModel)">
-									</ons-icon>
-									<span style="padding-right:30px;">&nbsp;
-									</span>
-								</div>
-								<div class="center">
-									{{'MYMODEL'}}&nbsp;-&nbsp;{{mymodel.toSummary()}}&nbsp;-&nbsp;
-								</div>
-							</ons-toolbar><!-- end toolbar: edit-mymodel -->
-							<!-- ===== begin tabbar: edit-mymodel ===== -->
-
-							<ons-template id="tab-form.html">
-								<ons-page id="tab-form-page">
-									<input name="id" type="hidden" id="editmymodel-id"
-										ng-model="mymodel.id" />
-									<!-- ===== begin property: mymodel-field1 ===== -->
-									<ons-list-item id="editmymodel-field1" class="item">
-										<input name="field1" type="text" ng-model="mymodel.field1"
-											class="mymodel-field1 text-input text-input--transparent"
-											placeholder="{{'FIELD1'}} ({{'MANDATORY'}})" ng-required="true" />
-									</ons-list-item><!-- end property: mymodel-field1 -->
-									<ons-fab position="bottom right" 
-										ng-click="mymodelCtl.saveAction(mymodel)">
-										<ons-icon icon="ion-checkmark-round"></ons-icon>
-									</ons-fab>
-								</ons-page>
-							</ons-template>
-
-							<ons-tabbar id="edit-mymodel-tabbar" position="top">
-								<ons-tab label="{{'FORM'}}" page="tab-form.html" active="true"
-									style="background-color:#333;">
-								</ons-tab>
-							</ons-tabbar><!-- end tabbar: edit-mymodel -->
-
-						</form>
-					</ons-page>
-
-				</ons-template>
-
-				<!-- template: new-mymodel -->
-				<ons-template id="new-mymodel.html">
-					<ons-page ng-controller="MyModelController as mymodelCtl"
-						id="newmymodel-page">
-						<form id="newmymodel-form" name="newmymodelForm" class="mymodel-form"><!-- novalidate="true" -->
-							<!-- ===== begin toolbar: new-mymodel ===== -->
-							<ons-toolbar id="new-mymodel-toolbar" style="background-color:#333;">
-								<div class="left">
-									<ons-icon icon="ion-chevron-left" size="30px"
-										style="color:#ccc;padding:10px 0 10px 10px;" ng-click="mymodelCtl.backAction(initialMyModel)">
-									</ons-icon>
-									<span style="padding-right:30px;">&nbsp;
-									</span>
-								</div>
-								<div class="center">
-									{{'MYMODEL'}}&nbsp;-&nbsp;{{mymodel.toSummary()}}&nbsp;-&nbsp;
-								</div>
-							</ons-toolbar><!-- end toolbar: new-mymodel -->
-							<!-- ===== begin tabbar: new-mymodel ===== -->
-
-							<ons-template id="tab-form.html">
-								<ons-page id="tab-form-page">
-									<input name="id" type="hidden" id="editmymodel-id"
-										ng-model="mymodel.id" />
-									<!-- ===== begin property: mymodel-field1 ===== -->
-									<ons-list-item id="editmymodel-field1" class="item">
-										<input name="field1" type="text" ng-model="mymodel.field1"
-											class="mymodel-field1 text-input text-input--transparent"
-											placeholder="{{'FIELD1'}} ({{'MANDATORY'}})" ng-required="true" />
-									</ons-list-item><!-- end property: mymodel-field1 -->
-									<ons-fab position="bottom right" 
-										ng-click="mymodelCtl.saveAction(mymodel)">
-										<ons-icon icon="ion-checkmark-round"></ons-icon>
-									</ons-fab>
-								</ons-page>
-							</ons-template>
-
-							<ons-tabbar id="new-mymodel-tabbar" position="top">
-								<ons-tab label="{{'FORM'}}" page="tab-form.html" active="true"
-									style="background-color:#333;">
-								</ons-tab>
-							</ons-tabbar><!-- end tabbar: new-mymodel -->
-
-						</form>
-
-					</ons-page>
-				</ons-template>
 			</div><!-- end entity: mymodel -->
 
 			<div id="menu-page">
@@ -177,7 +75,6 @@
 			<script src="js/devDeps/jquery.js"></script>
 			<script src="js/devDeps/onsenui.js"></script>
 			<script src="js/devDeps/angular-onsenui.js"></script>
-			<script src="js/devDeps/lokijs.js"></script>
 			<script src="js/core.js"></script>
 			<script src="js/main.js"></script>
 

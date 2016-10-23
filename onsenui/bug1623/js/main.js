@@ -2,20 +2,9 @@
 // MAIN
 // //////////////////////////////////////////////
 ons.ready(function() {
-	console.log('[onsenuilog] ' + 'ons.ready');
+	console.debug('[onsenuilog] ' + 'ons.ready');
 
-	document.addEventListener("pageinit",
-			function(e) {
-				if (e.target.id != '') {
-					console.debug("[onsenuilog] pageinit: id='" + e.target.id
-							+ "'", e);
-				} else if (e.target.name != null && e.target.name != '') {
-					console.debug("[onsenuilog] pageinit: name='"
-							+ e.target.name + "'", e);
-				} else {
-					console.warn("[onsenuilog] pageinit '' => ", e.target);
-				}
-			}, false);
-
+  // comment => blank page
+	console.warn("[bug#1623] js/main.js: comment $('#splitter-page').show(); to see blank page");
 	$('#splitter-page').show();
 });

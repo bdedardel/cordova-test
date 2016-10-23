@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en" ng-app="onsenuiCore" data-framework="typescript">
+	<head>
+		<title>OnsenUI MyModel</title>
+
+		<meta http-equiv="Content-Security-Policy"
+			content="default-src *; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' *.test.com https://maps.googleapis.com http://localhost:8080">
+			<link rel="stylesheet" href="css/lib/onsenui.css" />
+			<link rel="stylesheet" href="css/lib/onsen-css-components-blue-basic-theme.css" />
+	</head>
+	<body ng-controller="AppController as appCtl" style="width:100%;overflow:hidden;">
+
+		<ons-navigator var="onsOnsenUINavigator" page="splitter.html"></ons-navigator>
+
+		<ons-template id="splitter.html">
+			<ons-page id="splitter-page">
+				<ons-splitter id="mainSplitter">
+					<ons-splitter-side var="onsenuiMenu" side="left"
+						width="80%" collapse swipeable page="menu.html">
+					</ons-splitter-side>
+
+					<ons-splitter-content page="main.html"></ons-splitter-content>
+				</ons-splitter>
+			</ons-page>
+		</ons-template>
+
+		<div id="main">
+
+			<div id="mymodel-pages"><!-- ===== begin entity: mymodel ===== -->
+				<ons-template id="main.html">
+
+					<ons-page id="mainmymodel-page" ng-controller="MyModelController as mymodelCtl">
+						<!-- ===== begin toolbar: main-mymodel ===== -->
+						<ons-toolbar id="main-mymodel-toolbar" style="background-color:#333;">
+							<div class="left" onclick="onsenuiMenu.toggle()">
+								<ons-icon icon="ion-navicon" size="30px"
+									style="color:#ccc;padding:10px 30px 10px 10px;">
+								</ons-icon>
+							</div>
+							<div class="center">
+								{{'MYMODEL LIST'}}
+							</div>
+						</ons-toolbar><!-- end toolbar: main-mymodel -->
+						<ons-list id="listitems-list">
+							<ons-list-header>{{'ITEMS'}}</ons-list-header>
+							<ons-list-item class="item" modifier="chevron"
+								ng-click="mymodelCtl.newAction(mymodel)">
+
+								<div class="center">ons-toolbar inside form: field1 is hidden</div>
+
+							</ons-list-item>
+							<ons-list-item class="item" modifier="chevron"
+								ng-click="mymodelCtl.newAction2(mymodel)">
+
+								<div class="center">ons-toolbar outside form: field1 is ok</div>
+
+							</ons-list-item>
+						</ons-list>
+					</ons-page>
+				</ons-template>
+
+				<!-- template: new-mymodel -->
+				<ons-template id="new-mymodel.html">
+					<ons-page ng-controller="MyModelController as mymodelCtl"
+						id="newmymodel-page">
+						<form id="newmymodel-form" name="newmymodelForm" class="mymodel-form"><!-- novalidate="true" -->
+							<!-- ===== begin toolbar: new-mymodel ===== -->
+							<ons-toolbar id="new-mymodel-toolbar" style="background-color:#333;">
+								<div class="left">
+									<ons-icon icon="ion-chevron-left" size="30px"
+										style="color:#ccc;padding:10px 0 10px 10px;" ng-click="mymodelCtl.backAction(initialMyModel)">
+									</ons-icon>
+									<span style="padding-right:30px;">&nbsp;
+									</span>
+								</div>
+								<div class="center">
+									{{'MYMODEL'}}&nbsp;-&nbsp;{{mymodel.toSummary()}}&nbsp;-&nbsp;
+								</div>
+							</ons-toolbar><!-- end toolbar: new-mymodel -->
+							<!-- ===== begin tabbar: new-mymodel ===== -->
+
+							<input name="id" type="hidden" id="editmymodel-id"
+								ng-model="mymodel.id" />
+							<ons-list>
+								<ons-list-item id="editmymodel-field1" class="item">
+									<input name="field1" type="text" ng-model="mymodel.field1"
+										class="mymodel-field1 text-input text-input--transparent"
+										placeholder="{{'FIELD1'}} ({{'MANDATORY'}})" ng-required="true" />
+								</ons-list-item>
+							</ons-list>
+							<ons-fab position="bottom right" ng-click="mymodelCtl.saveAction(mymodel)">
+								<ons-icon icon="ion-checkmark-round"></ons-icon>
+							</ons-fab>
+
+						</form>
+
+					</ons-page>
+				</ons-template>
+			</div><!-- end entity: mymodel -->
+
+			<!-- template: new-mymodel2 -->
+			<ons-template id="new-mymodel2.html">
+				<ons-page ng-controller="MyModelController as mymodelCtl"
+					id="newmymodel2-page">
+
+					<!-- ===== begin toolbar: new-mymodel2 ===== -->
+					<ons-toolbar id="new-mymodel2-toolbar" style="background-color:#333;">
+						<div class="left">
+							<ons-icon icon="ion-chevron-left" size="30px"
+								style="color:#ccc;padding:10px 0 10px 10px;" ng-click="mymodelCtl.backAction(initialMyModel)">
+							</ons-icon>
+							<span style="padding-right:30px;">&nbsp;
+							</span>
+						</div>
+						<div class="center">
+							{{'MYMODEL'}}&nbsp;-&nbsp;{{mymodel.toSummary()}}&nbsp;-&nbsp;
+						</div>
+					</ons-toolbar><!-- end toolbar: new-mymodel2 -->
+					<!-- ===== begin tabbar: new-mymodel2 ===== -->
+
+					<form id="newmymodel2-form" name="newmymodel2Form" class="mymodel-form"><!-- novalidate="true" -->
+
+						<input name="id" type="hidden" id="editmymodel2-id"
+							ng-model="mymodel.id" />
+						<ons-list>
+							<ons-list-item id="editmymodel2-field1" class="item">
+								<input name="field1" type="text" ng-model="mymodel.field1"
+									class="mymodel-field1 text-input text-input--transparent"
+									placeholder="{{'FIELD1'}} ({{'MANDATORY'}})" ng-required="true" />
+							</ons-list-item>
+						</ons-list>
+						<ons-fab position="bottom right" ng-click="mymodelCtl.saveAction(mymodel)">
+							<ons-icon icon="ion-checkmark-round"></ons-icon>
+						</ons-fab>
+
+					</form>
+
+				</ons-page>
+			</ons-template>
+		</div><!-- end entity: mymodel2 -->
+
+		<div id="menu-page">
+			<ons-template id="menu.html">
+				<ons-page id="menu-page">
+					<ons-list>
+						<!-- loadContent('edit-mymodel.html', {closeMenu: true}) -->
+						<ons-list-item style="background-color:#333;">
+							<img src="img/logo.png"
+								style="vertical-align:middle;max-width:30px;max-height:30px;" />
+      &nbsp;OnsenUI
+						</ons-list-item>
+					</ons-list>
+				</ons-page>
+			</ons-template>
+
+		</div>
+
+		<script src="js/devDeps/angular.js"></script>
+		<script src="js/devDeps/jquery.js"></script>
+		<script src="js/devDeps/onsenui.js"></script>
+		<script src="js/devDeps/angular-onsenui.js"></script>
+		<script src="js/devDeps/lokijs.js"></script>
+		<script src="js/core.js"></script>
+		<script src="js/main.js"></script>
+
+		<script src="cordova.js"></script>
+
+	</body>
+</html>

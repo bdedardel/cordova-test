@@ -114,7 +114,8 @@ limitations under the License.
   initTemplateCache();
 
   function waitOnsenUILoad() {
-    var unlockOnsenUI = ons._readyLock.lock();
+    console.log('angular-onsenui waitOnsenUILoad...');
+	var unlockOnsenUI = ons._readyLock.lock();
     module.run(['$compile', '$rootScope', function ($compile, $rootScope) {
       // for initialization hook.
       if (document.readyState === 'loading' || document.readyState == 'uninitialized') {
@@ -8482,8 +8483,14 @@ babelHelpers;
 
   var lastLink = window.ons.NavigatorElement.rewritables.link;
   window.ons.NavigatorElement.rewritables.link = function (navigatorElement, target, options, callback) {
-    var view = angular.element(navigatorElement).data('ons-navigator');
-    view._compileAndLink(target, function (target) {
+	console.log('angular-onsenui - window.ons.NavigatorElement.rewritables.link angular.element(navigatorElement) is ok:',angular.element(navigatorElement));    
+	var view = angular.element(navigatorElement).data('ons-navigator');
+	if (view == null) {
+		console.warn("angular-onsenui - window.ons.NavigatorElement.rewritables.link angular.element(navigatorElement).data('ons-navigator') is NOK:",view);
+	} else {
+		console.log("angular-onsenui - window.ons.NavigatorElement.rewritables.link angular.element(navigatorElement).data('ons-navigator') is ok:",view);
+	}
+	view._compileAndLink(target, function (target) {
       lastLink(navigatorElement, target, options, callback);
     });
   };
@@ -11043,7 +11050,13 @@ babelHelpers;
 
   var lastLink = window.ons.SplitterContentElement.rewritables.link;
   window.ons.SplitterContentElement.rewritables.link = function (element, target, options, callback) {
+    console.log('angular-onsenui - window.ons.SplitterContentElement.rewritables.link angular.element(element) is ok:',angular.element(element));        
     var view = angular.element(element).data('ons-splitter-content');
+    if (view == null) {
+    	console.warn("angular-onsenui - window.ons.SplitterContentElement.rewritables.link angular.element(element).data('ons-splitter-content') is NOK:",view);
+	} else {
+		console.log("angular-onsenui - window.ons.SplitterContentElement.rewritables.link angular.element(element).data('ons-splitter-content') is ok:",view);
+	}
     lastLink(element, target, options, function (target) {
       view._link(target, callback);
     });

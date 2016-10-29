@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="onsenuiCore" data-framework="typescript">
+<html lang="en" ng-app="onsenuiCore">
 	<head>
 		<title>OnsenUI MyModel</title>
 
@@ -7,7 +7,12 @@
 			content="default-src *; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' *.test.com https://maps.googleapis.com http://localhost:8080">
 			<link rel="stylesheet" href="css/lib/onsenui.css" />
 			<link rel="stylesheet" href="css/lib/onsen-css-components-blue-basic-theme.css" />
-			<script>
+	<script src="js/devDeps/angular.js"></script>
+	
+			<script src="js/devDeps/jquery.js"></script>
+				<script src="js/devDeps/onsenui.js"></script>
+			<script src="js/devDeps/angular-onsenui.js"></script>			
+	<script>
 function changeOnsPageDom() {
 	console.log('function changeOnsPageDom()...');
 	$('#onspage-div').html('NEW DIV CONTENT FOR ONS-PAGE');
@@ -21,7 +26,7 @@ function changeOnsTabbarDom() {
 }			
 			</script>
 	</head>
-	<body ng-controller="AppController as appCtl" style="width:100%;overflow:hidden;">
+	<body style="width:100%;overflow:hidden;">
 
 		<ons-navigator var="onsOnsenUINavigator" page="splitter.html"></ons-navigator>
 
@@ -166,16 +171,9 @@ function changeOnsTabbarDom() {
 				</ons-template>
 
 			</div>
-
-			<script src="js/devDeps/angular.js"></script>
-			<script src="js/devDeps/jquery.js"></script>
-			<script src="js/devDeps/onsenui.js"></script>
-			<script src="js/devDeps/angular-onsenui.js"></script>
-			<script src="js/devDeps/lokijs.js"></script>
+			
 			<script src="js/core.js"></script>
 			<script src="js/main.js"></script>
-
-			<script src="cordova.js"></script>
 
 	</body>
 </html>

@@ -111,6 +111,17 @@ function changeOnsTabbarDom() {
 
 				</ons-template>
 
+				<ons-template id="tab-form.html">
+					<ons-page id="tab-form-page">
+						<div id="onstabbar-div" style="padding-top:100px">onstabbar-div</div>
+						
+						<ons-fab position="bottom right" 
+							onclick="changeOnsTabbarDom()">
+							Clic
+						</ons-fab>
+					</ons-page>
+				</ons-template>
+
 				<!-- template: show-onstabbar -->
 				<ons-template id="show-onstabbar.html">
 					<ons-page ng-controller="MyModelController as mymodelCtl"
@@ -131,17 +142,6 @@ function changeOnsTabbarDom() {
 								</div>
 							</ons-toolbar><!-- end toolbar: show-onstabbar -->
 							<!-- ===== begin tabbar: show-onstabbar ===== -->
-
-							<ons-template id="tab-form.html">
-								<ons-page id="tab-form-page">
-									<div id="onstabbar-div" style="padding-top:100px">onstabbar-div</div>
-									
-									<ons-fab position="bottom right" 
-										onclick="changeOnsTabbarDom()">
-										Clic
-									</ons-fab>
-								</ons-page>
-							</ons-template>
 
 							<ons-tabbar id="show-onstabbar-tabbar" position="top">
 								<ons-tab label="{{'FORM'}}" page="tab-form.html" active="true"
